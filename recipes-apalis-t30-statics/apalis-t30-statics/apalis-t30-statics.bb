@@ -1,15 +1,15 @@
-PROVIDES = "apalis-t30"
+SUMMARY = "Apalis-t30 static files"
+SECTION = "devel"
 
-LICENSE = "LGPLv3"
+#PROVIDES = "apalis-t30"
+
+LICENSE = "LGPL-3.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-FILES_${PN} = ""
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-#ALLOW_EMPTY_${PN} = "1"
- 
-S = "${THISDIR}/files"
-
-do_install() {
-    rsync -a --exclude=.svn ${THISDIR}/files/* ${D}
-}
+SRC_URI = "file://${BP}.tar.gz \
+file://LICENSE \
+"
+inherit bin_package
 
